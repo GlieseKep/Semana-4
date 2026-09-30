@@ -31,4 +31,12 @@ export class ProductosResolver {
     const { data } = await firstValueFrom(this.http.get<Producto[]>(API_URL));
     return data.filter((p) => p.precio <= precioMaximo);
   }
+
+    @Query(() => [Producto])
+  async productosCaros(
+    @Args('precioMinimo', { type: () => Float }) precioMinimo: number,
+  ): Promise<Producto[]> {
+    const { data } = await firstValueFrom(this.http.get<Producto[]>(API_URL));
+  return data.filter((p) => p.precio >= precioMinimo);
+  }
 }

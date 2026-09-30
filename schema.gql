@@ -12,4 +12,5 @@ type Query {
   productos: [Producto!]!
   productoPorId(id: Int!): Producto
   productosBaratos(precioMaximo: Float!): [Producto!]!
+  productosCaros(precioMinimo: Float!): [Producto!]!
 }
